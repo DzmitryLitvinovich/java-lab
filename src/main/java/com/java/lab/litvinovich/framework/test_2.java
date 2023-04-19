@@ -8,18 +8,16 @@ public class test_2 {
         Scanner sc = new Scanner(System.in);
         System.out.print("Введите набор целых чисел через пробел: ");
         String input = sc.nextLine();
-        String[] numbers = input.split(" ");
 
-        List<Integer> list = new ArrayList<>();
-        Set<Integer> uniqueNumbers = new HashSet<>();
-
-        for (String number : numbers) {
+        HashSet<Integer> set = new HashSet<>();
+        for (String number : input.split("\\s+")) {
             int value = Integer.parseInt(number);
-            list.add(value);
+            set.add(value);
         }
 
-        for (Integer number : list) {
-            int count = Collections.frequency(list, number);
+        HashSet<Integer> uniqueNumbers = new HashSet<>();
+        for (Integer number : set) {
+            int count = Collections.frequency(new ArrayList<>(set), number);
             if (count == 1) {
                 uniqueNumbers.add(number);
             }
